@@ -2,7 +2,7 @@
 
 The repository contains 2 folders. "dapp" is responsible for the back-end side. And "my-frame" for creating and validating frames.
 
-This project uses Frog.fm framework to create and process frames, and ERC721 token standards, oppenZeppelin lib. and custom solidity smart contracts.
+This project uses **Frog.fm** framework to create and process frames, and ERC721 token standards, oppenZeppelin lib. and custom solidity smart contracts.
 
 **Utility:** The user can send transactions with messages from Base to Optimism through the frame using the IBC channel and interact with packet sending process over there. In this case, as the final step user got NFT on Optimism with the message they sent.
 
