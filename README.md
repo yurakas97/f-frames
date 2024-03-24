@@ -8,85 +8,49 @@ This project uses Frog.fm framework to create and process frames, and ERC721 tok
 
 How it works(video): https://www.youtube.com/watch?v=jljusQy0V7s
 
-## Prerequisites
-
-1.
-
-
-
-## 📚 Documentation
-
-This repository is forked from [the IBC app template repo](https://open-ibc/ibc-app-solidity-template) so check it out if you haven't or find its docs [here](ibc-app-template.md).
-
-There's some basic information here in the README but all of the dApps found here are documented more extensively in [the official Polymer documentation](https://docs.polymerlabs.org/docs/quickstart/start).
 
 ## 📋 Prerequisites
 
-The demo dapps repository has been based on the project structure found in the [IBC app template for Solidity](https://github.com/open-ibc/ibc-app-solidity-template) so it has the same requirements:
 
 - Have [git](https://git-scm.com/downloads) installed
-- Have [node](https://nodejs.org) installed (v18+)
+- Have [node](https://nodejs.org) installed (v20+)
 - Have [Foundry](https://book.getfoundry.sh/getting-started/installation) installed (Hardhat will be installed when running `npm install`)
 - Have [just](https://just.systems/man/en/chapter_1.html) installed (recommended but not strictly necessary)
+- Have npm installed
 
 Some basic knowledge of all of these tools is also required, although the details are abstracted away for basic usage.
 
-## 🧱 Repository Structure
+## 💻 Installation
 
-This repository has a project structure that set it up to be compatible with the Hardhat and Foundry EVM development environments, as in the [IBC app template for Solidity repo](https://github.com/open-ibc/ibc-app-solidity-template). 
-
-The main logic specific to the dApps can be found in the `/contracts` directory:
-
-# Example tree structure with only one custom dApp, joke-nft
+After cloning the repository: 
+```bash 
+git clone https://github.com/yurakas97/f-frames.git
 ```
-contracts
-├── base
-│   ├── CustomChanIbcApp.sol
-│   ├── GeneralMiddleware.sol
-│   └── UniversalChanIbcApp.sol
-├── jokes
-│   ├── BaseContract.sol
-│   └── OptContract.sol
-└── arguments.js
-``` 
-
-## 🦮 Dependency management
-
-This repo depends on Polymer's [vibc-core-smart-contracts](https://github.com/open-ibc/vibc-core-smart-contracts) which are tracked as git submodules. 
-
-There are two ways to install these dependencies.
-
-### Using IBC app template just recipe
-
-If you have Node and Foundry installed, simply run:
+run this command additionally:
 ```bash
-just install
+npm install express
 ```
-
-To install the required dependencies.
-
-### Using git submodules directly
-
-If you prefer not to use Foundry / Forge, you can use git submodules directly.
-
-After cloning the repo, run this command additionally:
 ```bash
-git submodule update --init --recursive
+npm install -D typescript
+```
+```bash
+npm install frog hono
 ```
 
-Find more documentation on using git submodules from the [official docs](https://git-scm.com/book/en/v2/Git-Tools-Submodules) or [in this tutorial](https://www.atlassian.com/git/tutorials/git-submodule).
+To run the back-end server, there are a couple of things to do. (Assuming the dependencies have been installed). Go to dapp folder
+```bash
+cd dapp
+```
 
-Also run ```npm install``` additionally and ```npm install express```.
+1. Convert the `.env.example` file into an `.env` file.
+```bash
+cp .env.example .env
+```
+Add your private keys and update the other values if you want to customize (advanced usage feature).
 
-## 💻 Interacting with demos
+3. Check out the configuration file; `config.json` or the alternate configs in the `/config` directory. Depending on which application you'll want to interact with, update the contract type in the `deploy` field to the desired contract (use the `just set-contracts` recipe for that).
 
-To interact with any of the demos, there are a couple of things to do. (Assuming the dependencies have been installed).
-
-1. Convert the `.env.example` file into an `.env` file. This will ignore the file for future git commits as well as expose the environment variables. Add your private keys and update the other values if you want to customize (advanced usage feature).
-
-2. Check out the configuration file; `config.json` or the alternate configs in the `/config` directory. Depending on which application you'll want to interact with, update the contract type in the `deploy` field to the desired contract (use the `just set-contracts` recipe for that).
-
-3. Once the configuration file is updated and saved, you can look at the `just` commands with `just --list`.
+4. Once the configuration file is updated and saved, you can look at the `just` commands with `just --list`.
 
 ## 💻 How to run
 
