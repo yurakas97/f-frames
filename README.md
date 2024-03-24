@@ -37,40 +37,39 @@ npm install -D typescript
 npm install frog hono
 ```
 
-To run the back-end server, there are a couple of things to do. (Assuming the dependencies have been installed). Go to dapp folder
+To **run the back-end server**, there are a couple of things to do. (Assuming the dependencies have been installed). Go to "dapp" folder
 ```bash
 cd dapp
 ```
-
-1. Convert the `.env.example` file into an `.env` file.
+Convert the `.env.example` file into an `.env` file.
 ```bash
 cp .env.example .env
 ```
-Add your private keys and update the other values if you want to customize (advanced usage feature).
+Add your private keys and config path:
+```bash
+CONFIG_PATH='config/message-dapp.json'
+```
 
-3. Check out the configuration file; `config.json` or the alternate configs in the `/config` directory. Depending on which application you'll want to interact with, update the contract type in the `deploy` field to the desired contract (use the `just set-contracts` recipe for that).
+Once the configuration file is updated and saved, you can set and deploy contracts.
 
-4. Once the configuration file is updated and saved, you can look at the `just` commands with `just --list`.
+- ```nvm use 20```
+- ```just set-contracts base BaseContract``` and
+- ```just set-contracts optimism OptContract false```
+- ```just deploy base optimism``` to deploy.
+- ```just create-channel``` to create a custom IBC channel.
 
 ## 💻 How to run
 
-1. Place this repo on the local server with the required dependencies installed. And run the next commands in the CLI.
-2. ```cp .env.example .env``` set up private keys and APIs, then
-3. ```CONFIG_PATH='config/jokes-config.json' ```  
-4. ```nvm use 20```
+Use a second terminal or screen to run there app.js server that will listen to requests from the frame validator and send packets through IBC.
+```bash
+node app.js
+```
+Return to the first terminal and go to "my-frame" dir.
+```bash
+npm install
+npm run dev
+```
 
-**There're couple ways to run and interact, option 5 or 6 or 7:**
-
-5. Run just file to put everything together: ```just do-it``` (will cover all functionality: contract deployment, channel creation, NFT minting and packet sending)
-6. Run a contract creating and deployment:
-- ```just set-contracts optimism OptContract``` and
-- ```just set-contracts base BaseContract false```
-- ```just deploy optimism base``` to deploy.
-- ```just create-channel``` to create a custom IBC channel.
-- Then run ```just do-it-main``` as many times as you wish to create and bridge Joke NFT through IBC.
-7. Use the Live Server extension (VSCode) to run or just open the ```interface/index.html``` file through the browser to start the UI/UX interface
-- Run a local server ```node app.js``` that listens to requests from the web page and sends packets through IBC.
-- Go to the web page and interact with the UI/UX interface that does the same as above.
 
   **Proof of interaction**:
 
