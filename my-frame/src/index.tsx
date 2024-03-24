@@ -65,7 +65,7 @@ app.frame('/send', (c) => {
 
   async function executeCommand() {
     const command = `node scripts/private/_send-packet-config.js ${messageText}`;
-    await fetch('https://sweeping-forcibly-gannet.ngrok-free.app/execute-command', {
+    await fetch('https://localhost:3000/execute-command', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
